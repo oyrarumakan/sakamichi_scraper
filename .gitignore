@@ -1,0 +1,19 @@
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+/vendor/
+
+# ignore files needed only for development
+.ruby-version
+Gemfile.lock
+
+# rspec failure tracking
+.rspec_status
+
+# ignore genereted file from IDE
+.idea/
