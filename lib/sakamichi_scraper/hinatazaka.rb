@@ -1,18 +1,9 @@
-
-
+require "sakamichi_scraper/base"
 
 module SakamichiScraper
-  class Hinatazaka
-    attr_reader :html
-
-    def initialize
-      url = YAML.load_file("config/url.yml")["hinatazaka"]["blog_top_page"]
-      @html = URI.open(url, "User-Agent" => "Chrome/86.0.4240.80") do |f|
-        f.read
-      end
-    end
-
+  class Hinatazaka < Base
     def get_blog_top_page_title
+      html = init_url("hinatazaka", "blog_top_page")
       Nokogiri::HTML.parse(html, nil, nil).title
     end
   end
