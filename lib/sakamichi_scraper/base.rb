@@ -10,5 +10,9 @@ module SakamichiScraper
         f.read
       end
     end
+
+    def format_content(content)
+      content.gsub(/[\r\n\s]/, "")
+    end
   end
 end
