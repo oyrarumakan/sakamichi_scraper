@@ -7,7 +7,7 @@ module SakamichiScraper
       Nokogiri::HTML.parse(html, nil, nil).title
     end
 
-    def get_recent_blog_title
+    def get_newest_blog_title
       html = get_blog_top_page
       scraped_title = Nokogiri.parse(html, nil, nil)
                         .at_css(".p-blog-main__head > .c-blog-main__title")
