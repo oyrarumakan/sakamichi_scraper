@@ -14,5 +14,9 @@ module SakamichiScraper
     def format_content(content)
       content.gsub(/[\r\n\s]/, "")
     end
+
+    def format_timestamp(datetime)
+      DateTime.parse(datetime).strftime('%Y-%-m-%-d %-H:%-M')
+    end
   end
 end
