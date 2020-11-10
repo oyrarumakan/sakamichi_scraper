@@ -25,7 +25,6 @@ module SakamichiScraper
           title: info_arr[1].lstrip,
           timestamp: format_timestamp(info_arr[2].lstrip)
         }
-        p info
         res << info
       end
     end
