@@ -22,7 +22,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### get title of blog
+
+#### Hinatazaka46
+```ruby
+hinata = SakamichiScraper::Hinatazaka.new
+
+# get newest title of article
+hinata.get_newest_blog_title
+
+# get recent title, member name, timestamp of article
+hinata.get_recent_blog_info
+```
+
+#### Sakurazaka46
+```ruby
+sakura = SakamichiScraper::Sakurazaka.new
+
+# get newest title of article
+sakura.get_newest_blog_title
+
+# get recent title, member name, timestamp of article
+sakura.get_recent_blog_info
+```
 
 ## Development
 
