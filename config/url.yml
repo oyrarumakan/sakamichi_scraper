@@ -2,5 +2,6 @@ hinatazaka:
   blog_top_page: "https://www.hinatazaka46.com/s/official/diary/member?ima=0000"
   blog_list_page: "https://www.hinatazaka46.com/s/official/diary/member/list?ima=0000"
 sakurazaka:
-
+  blog_top_page: "https://sakurazaka46.com/s/s46/diary/blog"
+  blog_list_page: "https://sakurazaka46.com/s/s46/diary/blog/list"
 keyakizaka:
