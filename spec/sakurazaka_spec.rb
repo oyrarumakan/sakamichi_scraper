@@ -19,7 +19,7 @@ RSpec.describe(SakamichiScraper::Sakurazaka) do
   context "get_recent_blog_info" do
     it "櫻坂46のnew postsの各要素が正しく返却されること" do
       recent_blog_info = @sakurazaka.get_recent_blog_info
-      expect(recent_blog_info).not_to eq nil
+      expect(recent_blog_info.empty?).to eq false
       expect(recent_blog_info).is_a?(Array)
       expect(recent_blog_info.size).to eq 12
     end
