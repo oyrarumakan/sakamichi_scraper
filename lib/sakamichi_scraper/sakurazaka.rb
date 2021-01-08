@@ -9,12 +9,12 @@ module SakamichiScraper
 
     def get_newest_blog_title
       html = get_blog_list_page
-      Nokogiri.parse(html, nil, nil).css(".inner.title-wrap > .title").first.children.to_s
+      Nokogiri.parse(html, nil, nil).at_css(".date-title > .title").children.to_s
     end
 
     def get_recent_blog_info
       res = []
-      html = get_blog_top_page
+      html = get_blog_list_page
       Nokogiri.parse(html, nil, nil).css(".com-blog-part.box4.fxpc > li").each do |c|
         info = {
           member: c.css(".prof-in.fx > .name").children.to_s,
