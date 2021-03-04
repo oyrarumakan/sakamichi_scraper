@@ -1,3 +1,5 @@
+require "fileutils"
+
 module SakamichiScraper
   class Base
     def init_url(group_name, yml_key)
@@ -6,7 +8,7 @@ module SakamichiScraper
     end
 
     def get_content(url)
-      URI.open(url, "User-Agent" => "Chrome/86.0.4240.80") do |f|
+      URI.open(url, "User-Agent" => "Ruby/2.7.1") do |f|
         f.read
       end
     end
@@ -24,7 +26,7 @@ module SakamichiScraper
     end
 
     def mkdir_today_file_path
-      Dir.mkdir("img/#{exec_date}")
+      FileUtils.mkdir_p("img/#{exec_date}")
     end
   end
 end
