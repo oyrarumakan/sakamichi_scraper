@@ -1,8 +1,6 @@
 # SakamichiScraper
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sakamichi_scraper`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+## about me
+This gem is used to scrape information from Sakamichi group's(Hinatazaka46, Sakurazaka46) blog.
 
 ## Installation
 
@@ -44,6 +42,16 @@ sakura.get_newest_blog_title
 
 # get recent title, member name, timestamp of article
 sakura.get_recent_blog_info
+```
+
+### get images
+NOTE: Any images obtained by executing the following method will be stored in folder `img/<today(yyyymmdd)>`.
+#### Hinatazaka46
+
+#### Sakurazaka46
+```ruby
+# get images from newest article
+sakura.get_picture_in_newest_article
 ```
 
 ## Development
