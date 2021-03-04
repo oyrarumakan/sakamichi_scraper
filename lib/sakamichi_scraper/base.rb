@@ -18,5 +18,13 @@ module SakamichiScraper
     def format_timestamp(datetime)
       DateTime.parse(datetime).strftime('%Y-%-m-%-d %-H:%-M')
     end
+
+    def exec_date
+      @exec_date ||= Time.now.strftime('%Y%m%d')
+    end
+
+    def mkdir_today_file_path
+      Dir.mkdir("img/#{exec_date}")
+    end
   end
 end
