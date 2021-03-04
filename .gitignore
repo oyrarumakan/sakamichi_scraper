@@ -7,6 +7,7 @@
 /spec/reports/
 /tmp/
 /vendor/
+/img/
 
 # ignore files needed only for development
 .ruby-version
@@ -17,3 +18,4 @@ Gemfile.lock
 
 # ignore genereted file from IDE
 .idea/
+sakamichi_scraper.iml
