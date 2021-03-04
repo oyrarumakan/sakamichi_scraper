@@ -1,3 +1,5 @@
+require "fileutils"
+
 module SakamichiScraper
   class Base
     def init_url(group_name, yml_key)
@@ -6,7 +8,7 @@ module SakamichiScraper
     end
 
     def get_content(url)
-      URI.open(url, "User-Agent" => "Chrome/86.0.4240.80") do |f|
+      URI.open(url, "User-Agent" => "Ruby/2.7.1") do |f|
         f.read
       end
     end
@@ -17,6 +19,14 @@ module SakamichiScraper
 
     def format_timestamp(datetime)
       DateTime.parse(datetime).strftime('%Y-%-m-%-d %-H:%-M')
+    end
+
+    def exec_date
+      @exec_date ||= Time.now.strftime('%Y%m%d')
+    end
+
+    def mkdir_today_file_path
+      FileUtils.mkdir_p("img/#{exec_date}")
     end
   end
 end

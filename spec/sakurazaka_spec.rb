@@ -24,4 +24,13 @@ RSpec.describe(SakamichiScraper::Sakurazaka) do
       expect(recent_blog_info.size).to eq 12
     end
   end
+
+  context "get_picture_in_newest_article" do
+    it "櫻坂46の最新ブログ記事の画像がダウンロードできること" do
+      image_path = "img/#{Time.now.strftime('%Y%m%d')}"
+      @sakurazaka.get_picture_in_newest_article
+
+      expect(Dir.children(image_path).count).to be >= 1
+    end
+  end
 end
