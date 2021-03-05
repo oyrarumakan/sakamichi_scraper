@@ -4,4 +4,7 @@ hinatazaka:
 sakurazaka:
   blog_top_page: "https://sakurazaka46.com/s/s46/diary/blog"
   blog_list_page: "https://sakurazaka46.com/s/s46/diary/blog/list"
+  exclude_img_path:
+    - /files/14/s46/img/com-logo_pc.svg
+    - /files/14/s46/img/jasrac.jpg
 keyakizaka:

@@ -28,14 +28,14 @@ RSpec.describe(SakamichiScraper::Sakurazaka) do
   context "get_picture_in_newest_article" do
     let(:image_path) { "img/#{Time.now.strftime("%Y%m%d")}" }
 
+    # specを流す前にDLした画像を削除する
+    before(:example) do
+      Dir.glob("#{image_path}/*.jpg").each { |f| File.delete(f) }
+    end
+
     it "櫻坂46の最新ブログ記事の画像がダウンロードできること" do
       @sakurazaka.get_picture_in_newest_article
       expect(Dir.glob("#{image_path}/*.jpg").count).to be >= 1
-    end
-
-    # specを流し終わったらDLした画像を削除する
-    after(:example) do
-      Dir.glob("#{image_path}/*.jpg").each { |f| File.delete(f) }
     end
   end
 end

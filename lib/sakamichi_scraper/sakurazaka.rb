@@ -4,6 +4,7 @@ require "open-uri"
 module SakamichiScraper
   class Sakurazaka < Base
     HOME_PAGE = "https://sakurazaka46.com".freeze
+    GROUP_NAME = "sakurazaka".freeze
 
     def get_blog_top_page_title
       html = get_blog_top_page
@@ -41,11 +42,11 @@ module SakamichiScraper
     private
 
     def get_blog_top_page
-      init_url("sakurazaka", "blog_top_page")
+      init_url(GROUP_NAME, "blog_top_page")
     end
 
     def get_blog_list_page
-      init_url("sakurazaka", "blog_list_page")
+      init_url(GROUP_NAME, "blog_list_page")
     end
 
     def article_urls_from_list_page(html)
@@ -58,9 +59,9 @@ module SakamichiScraper
 
     def image_urls_from_article_url(article_html)
       [].tap do |url|
-        Nokogiri.parse(article_html, nil, nil).css("img").each do |c|
+        Nokogiri.parse(article_html, nil, nil).css("div.box-article > img").each do |c|
           image_url = c.attribute("src").value
-          next unless image_url.include?("diary")
+          next if exclude_img_path(GROUP_NAME).include?(image_url)
 
           url << "#{HOME_PAGE}#{image_url}"
         end
@@ -70,7 +71,7 @@ module SakamichiScraper
     def download_images_from_url_list(image_urls)
       image_urls.each do |image_url|
         dest_image_path = "img/#{exec_date}/#{image_url[%r([^/]+$)]}"
-        File.open(dest_image_path, 'w') do |pass|
+        File.open(dest_image_path, "w") do |pass|
           URI.parse(image_url).open do |img|
             pass.write(img.read)
           end

@@ -8,9 +8,7 @@ module SakamichiScraper
     end
 
     def get_content(url)
-      URI.open(url, "User-Agent" => "Ruby/2.7.1") do |f|
-        f.read
-      end
+      URI.open(url, "User-Agent" => "Ruby/2.7.1", &:read)
     end
 
     def format_content(content)
@@ -27,6 +25,10 @@ module SakamichiScraper
 
     def mkdir_today_file_path
       FileUtils.mkdir_p("img/#{exec_date}")
+    end
+
+    def exclude_img_path(group_name)
+      YAML.load_file("config/url.yml")["#{group_name}"]["exclude_img_path"]
     end
   end
 end
