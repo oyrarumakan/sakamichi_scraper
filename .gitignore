@@ -19,3 +19,4 @@ Gemfile.lock
 # ignore genereted file from IDE
 .idea/
 sakamichi_scraper.iml
+.rubocop_todo.yml
