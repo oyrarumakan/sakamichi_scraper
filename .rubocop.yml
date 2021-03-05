@@ -36,3 +36,7 @@ Style/AsciiComments:
 # 鬱陶しいのでfrozen_string_literalは書かなくてもいいことにする
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+# required_ruby_versionはまだ指定しない
+Gemspec/RequiredRubyVersion:
+  Enabled: false
