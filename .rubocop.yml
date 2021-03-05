@@ -1,0 +1,42 @@
+inherit_from: .rubocop_todo.yml
+
+Layout/EmptyLines:
+  Exclude:
+    - 'lib/sakamichi_scraper/sakurazaka.rb'
+
+# Hashの key/value の記述方法についてkey: value 形式を有効とする
+Style/HashSyntax:
+  EnforcedStyle: ruby19
+
+# 変数展開やエスケープの必要がない場合はダブルクォートを利用する
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+# パーセント記法の記号について とりあえずすべて()
+PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%':  ()
+    '%i': ()
+    '%q': ()
+    '%Q': ()
+    '%r': ()
+    '%s': ()
+    '%w': ()
+    '%W': ()
+    '%x': ()
+
+# 式展開中でもダブルクォートを使う
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# 日本語コメントを許容する
+Style/AsciiComments:
+  Enabled: false
+
+# 鬱陶しいのでfrozen_string_literalは書かなくてもいいことにする
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# required_ruby_versionはまだ指定しない
+Gemspec/RequiredRubyVersion:
+  Enabled: false
