@@ -1,9 +1,5 @@
 inherit_from: .rubocop_todo.yml
 
-Layout/EmptyLines:
-  Exclude:
-    - 'lib/sakamichi_scraper/sakurazaka.rb'
-
 # Hashの key/value の記述方法についてkey: value 形式を有効とする
 Style/HashSyntax:
   EnforcedStyle: ruby19
@@ -44,3 +40,7 @@ Gemspec/RequiredRubyVersion:
 # initialize classにsuperを強制しない
 Lint/MissingSuper:
   Enabled: false
+
+#メソッド行上限を20行にする
+Metrics/MethodLength:
+  Max: 20
