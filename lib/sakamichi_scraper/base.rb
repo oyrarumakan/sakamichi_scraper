@@ -43,5 +43,25 @@ module SakamichiScraper
     def exclude_img_path(group_name)
       YAML.load_file("config/url.yml")["#{group_name}"]["exclude_img_path"]
     end
+
+    def image_urls_from_article_url(article_html, class_name)
+      [].tap do |url|
+        Nokogiri.parse(article_html, nil, nil).css("#{class_name} img").each do |c|
+          image_url = c.attribute("src").value
+          url << "#{@home_page}#{image_url}"
+        end
+      end
+    end
+
+    def download_images_from_url_list(image_urls)
+      image_urls.each do |image_url|
+        dest_image_path = "img/#{exec_date}/#{image_url[%r([^/]+$)]}"
+        File.open(dest_image_path, "w") do |pass|
+          URI.parse(image_url).open do |img|
+            pass.write(img.read)
+          end
+        end
+      end
+    end
   end
 end
