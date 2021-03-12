@@ -47,6 +47,10 @@ sakura.get_recent_blog_info
 ### get images
 NOTE: Any images obtained by executing the following method will be stored in folder `img/<today(yyyymmdd)>`.
 #### Hinatazaka46
+```ruby
+# get images from newest article
+hinata.get_picture_in_newest_article
+```
 
 #### Sakurazaka46
 ```ruby
