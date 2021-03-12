@@ -37,11 +37,15 @@ module SakamichiScraper
     end
 
     def mkdir_today_file_path
-      FileUtils.mkdir_p("img/#{exec_date}")
+      FileUtils.mkdir_p(image_file_path)
     end
 
     def exclude_img_path(group_name)
       YAML.load_file("config/url.yml")["#{group_name}"]["exclude_img_path"]
+    end
+
+    def image_file_path
+      "img/#{@group_name}/#{exec_date}"
     end
 
     def image_urls_from_article_url(article_html, class_name)
@@ -60,7 +64,7 @@ module SakamichiScraper
 
     def download_images_from_url_list(image_urls)
       image_urls.each do |image_url|
-        dest_image_path = "img/#{exec_date}/#{image_url[%r([^/]+$)]}"
+        dest_image_path = "#{image_file_path}/#{image_url[%r([^/]+$)]}"
         File.open(dest_image_path, "w") do |pass|
           URI.parse(image_url).open do |img|
             pass.write(img.read)

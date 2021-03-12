@@ -26,7 +26,7 @@ RSpec.describe(SakamichiScraper::Sakurazaka) do
   end
 
   context "get_picture_in_newest_article" do
-    let(:image_path) { "img/#{Time.now.strftime("%Y%m%d")}" }
+    let(:image_path) { "img/sakurazaka/#{Time.now.strftime("%Y%m%d")}" }
 
     # specを流す前にDLした画像を削除する
     before(:example) do
