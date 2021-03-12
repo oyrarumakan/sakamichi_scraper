@@ -24,4 +24,18 @@ RSpec.describe(SakamichiScraper::Hinatazaka) do
       expect(recent_blog_info.size).to eq 12
     end
   end
+
+  context "get_picture_in_newest_article" do
+    let(:image_path) { "img/#{Time.now.strftime("%Y%m%d")}" }
+
+    # specを流す前にDLした画像を削除する
+    before(:example) do
+      Dir.glob("#{image_path}/*.jpg").each { |f| File.delete(f) }
+    end
+
+    it "日向坂46の最新ブログ記事の画像がダウンロードできること" do
+      @hinatazaka.get_picture_in_newest_article
+      expect(Dir.glob("#{image_path}/*.jpg").count).to be >= 1
+    end
+  end
 end
