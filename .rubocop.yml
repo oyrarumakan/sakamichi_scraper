@@ -40,3 +40,7 @@ Style/FrozenStringLiteralComment:
 # required_ruby_versionはまだ指定しない
 Gemspec/RequiredRubyVersion:
   Enabled: false
+
+# initialize classにsuperを強制しない
+Lint/MissingSuper:
+  Enabled: false
