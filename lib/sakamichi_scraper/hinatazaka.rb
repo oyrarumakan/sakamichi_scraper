@@ -35,7 +35,7 @@ module SakamichiScraper
       article_html = get_content(newest_article_url)
       image_urls = image_urls_from_article_url(article_html, "div.c-blog-article__text")
 
-      mkdir_today_file_path unless Dir.exist?("img/#{exec_date}")
+      mkdir_today_file_path unless Dir.exist?(image_file_path)
       download_images_from_url_list(image_urls)
     end
 
