@@ -48,7 +48,12 @@ module SakamichiScraper
       [].tap do |url|
         Nokogiri.parse(article_html, nil, nil).css("#{class_name} img").each do |c|
           image_url = c.attribute("src").value
-          url << "#{@home_page}#{image_url}"
+          url << case @group_name
+                 when "sakurazaka"
+                   "#{@home_page}#{image_url}"
+                 else
+                   image_url
+                 end
         end
       end
     end
