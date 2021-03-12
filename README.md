@@ -23,39 +23,43 @@ Or install it yourself as:
 ### get title of blog
 
 #### Hinatazaka46
+
 ```ruby
 hinata = SakamichiScraper::Hinatazaka.new
 
 # get newest title of article
-hinata.get_newest_blog_title
+hinata.newest_blog_title
 
 # get recent title, member name, timestamp of article
-hinata.get_recent_blog_info
+hinata.recent_blog_info
 ```
 
 #### Sakurazaka46
+
 ```ruby
 sakura = SakamichiScraper::Sakurazaka.new
 
 # get newest title of article
-sakura.get_newest_blog_title
+sakura.newest_blog_title
 
 # get recent title, member name, timestamp of article
-sakura.get_recent_blog_info
+sakura.recent_blog_info
 ```
 
 ### get images
 NOTE: Any images obtained by executing the following method will be stored in folder `img/<today(yyyymmdd)>`.
 #### Hinatazaka46
+
 ```ruby
 # get images from newest article
-hinata.get_picture_in_newest_article
+hinata.picture_in_newest_article
 ```
 
 #### Sakurazaka46
+
 ```ruby
 # get images from newest article
-sakura.get_picture_in_newest_article
+sakura.picture_in_newest_article
 ```
 
 ## Development
