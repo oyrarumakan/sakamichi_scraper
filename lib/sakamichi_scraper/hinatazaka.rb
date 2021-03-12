@@ -3,27 +3,23 @@ require "sakamichi_scraper/base"
 module SakamichiScraper
   class Hinatazaka < Base
     def initialize
-      @group_name = "hinatazaka"
-      @home_page = "https://#{@group_name}46.com"
+      super("hinatazaka")
     end
 
-    def get_blog_top_page_title
-      html = get_blog_top_page
-      Nokogiri::HTML.parse(html, nil, nil).title
+    def blog_top_page_title
+      Nokogiri::HTML.parse(blog_top_page, nil, nil).title
     end
 
-    def get_newest_blog_title
-      html = get_blog_top_page
-      scraped_title = Nokogiri.parse(html, nil, nil)
+    def newest_blog_title
+      scraped_title = Nokogiri.parse(blog_top_page, nil, nil)
                         .at_css(".p-blog-main__head > .c-blog-main__title")
                         .content
       format_content(scraped_title)
     end
 
-    def get_recent_blog_info
+    def recent_blog_info
       res = []
-      html = get_blog_top_page
-      Nokogiri.parse(html, nil, nil).css(".p-blog-top__list > li").each do |c|
+      Nokogiri.parse(blog_top_page, nil, nil).css(".p-blog-top__list > li").each do |c|
         info_arr = c.content.strip.split("\n").reject { |i| i.blank? }
         info = {
           member: info_arr[0],
@@ -34,9 +30,8 @@ module SakamichiScraper
       end
     end
 
-    def get_picture_in_newest_article
-      html = get_blog_top_page
-      newest_article_url = article_urls_from_list_page(html).first
+    def picture_in_newest_article
+      newest_article_url = article_urls_from_list_page(blog_top_page).first
       article_html = get_content(newest_article_url)
       image_urls = image_urls_from_article_url(article_html)
 
@@ -73,8 +68,8 @@ module SakamichiScraper
       end
     end
 
-    def get_blog_top_page
-      init_url(@group_name, "blog_top_page")
+    def blog_top_page
+      init_url_from_yml(@group_name, "blog_top_page")
     end
   end
 end

@@ -2,7 +2,12 @@ require "fileutils"
 
 module SakamichiScraper
   class Base
-    def init_url(group_name, yml_key)
+    def initialize(group_name)
+      @group_name = group_name
+      @home_page = "https://#{@group_name}46.com"
+    end
+
+    def init_url_from_yml(group_name, yml_key)
       url = YAML.load_file("config/url.yml")["#{group_name}"]["#{yml_key}"]
       get_content(url)
     end
@@ -11,16 +16,24 @@ module SakamichiScraper
       URI.open(url, "User-Agent" => "Ruby/2.7.1", &:read)
     end
 
+    def blog_top_page
+      init_url_from_yml(@group_name, "blog_top_page")
+    end
+
+    def blog_list_page
+      init_url_from_yml(@group_name, "blog_list_page")
+    end
+
     def format_content(content)
       content.gsub(/[\r\n\s]/, "")
     end
 
     def format_timestamp(datetime)
-      DateTime.parse(datetime).strftime('%Y-%-m-%-d %-H:%-M')
+      DateTime.parse(datetime).strftime("%Y-%-m-%-d %-H:%-M")
     end
 
     def exec_date
-      @exec_date ||= Time.now.strftime('%Y%m%d')
+      @exec_date ||= Time.now.strftime("%Y%m%d")
     end
 
     def mkdir_today_file_path
