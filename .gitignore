@@ -20,3 +20,4 @@ Gemfile.lock
 .idea/
 sakamichi_scraper.iml
 .rubocop_todo.yml
+.vscode
