@@ -19,7 +19,7 @@ module SakamichiScraper
       Nokogiri.parse(blog_list_page, nil, nil).css(".com-blog-part.box4.fxpc > li").each do |c|
         info = {
           member: c.css(".prof-in.fx > .name").children.to_s,
-          title:  c.css(".date-title > .title").children.to_s,
+          title: c.css(".date-title > .title").children.to_s,
           timestamp: c.css(".date.wf-a").children.to_s
         }
         res << info

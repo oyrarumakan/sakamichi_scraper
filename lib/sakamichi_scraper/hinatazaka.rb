@@ -12,15 +12,15 @@ module SakamichiScraper
 
     def newest_blog_title
       scraped_title = Nokogiri.parse(blog_top_page, nil, nil)
-                        .at_css(".p-blog-main__head > .c-blog-main__title")
-                        .content
+                              .at_css(".p-blog-main__head > .c-blog-main__title")
+                              .content
       format_content(scraped_title)
     end
 
     def recent_blog_info
       res = []
       Nokogiri.parse(blog_top_page, nil, nil).css(".p-blog-top__list > li").each do |c|
-        info_arr = c.content.strip.split("\n").reject { |i| i.blank? }
+        info_arr = c.content.strip.split("\n").reject(&:blank?)
         info = {
           member: info_arr[0],
           title: info_arr[1].lstrip,

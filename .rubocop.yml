@@ -44,3 +44,7 @@ Lint/MissingSuper:
 #メソッド行上限を20行にする
 Metrics/MethodLength:
   Max: 20
+
+# トップレベルにコメントはなくてもいいので
+Documentation:
+  Enabled: false

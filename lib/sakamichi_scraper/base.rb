@@ -8,7 +8,7 @@ module SakamichiScraper
     end
 
     def init_url_from_yml(group_name, yml_key)
-      url = YAML.load_file("config/url.yml")["#{group_name}"]["#{yml_key}"]
+      url = YAML.load_file("config/url.yml")[group_name.to_s][yml_key.to_s]
       get_content(url)
     end
 
@@ -41,7 +41,7 @@ module SakamichiScraper
     end
 
     def exclude_img_path(group_name)
-      YAML.load_file("config/url.yml")["#{group_name}"]["exclude_img_path"]
+      YAML.load_file("config/url.yml")[group_name.to_s]["exclude_img_path"]
     end
 
     def image_file_path
