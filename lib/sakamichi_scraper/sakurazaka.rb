@@ -35,6 +35,18 @@ module SakamichiScraper
       download_images_from_url_list(image_urls)
     end
 
+    def members_name_kanji
+      extract_member_list(target: "name_ja")
+    end
+
+    def members_name_hiragana
+      extract_member_list(target: "name_ja_hiragana")
+    end
+
+    def members_name_en
+      extract_member_list(target: "name_en")
+    end
+
     private
 
     def article_urls_from_list_page(html)

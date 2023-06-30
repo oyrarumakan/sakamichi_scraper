@@ -72,5 +72,18 @@ module SakamichiScraper
         end
       end
     end
+
+    def member_list
+      YAML.load_file("config/member_list/#{@group_name}.yml")
+    end
+
+    def extract_member_list(target:)
+      name_list = []
+      member_list.each do |member|
+        name_list << member.values.flatten!.first[target.to_s]
+      end
+
+      name_list
+    end
   end
 end
