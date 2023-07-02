@@ -19,7 +19,7 @@ module SakamichiScraper
       Nokogiri.parse(blog_list_page, nil, nil).css(".com-blog-part.box4.fxpc > li").each do |c|
         info = {
           member: c.css(".prof-in.fx > .name").children.to_s,
-          title:  c.css(".date-title > .title").children.to_s,
+          title: c.css(".date-title > .title").children.to_s,
           timestamp: c.css(".date.wf-a").children.to_s
         }
         res << info
@@ -33,6 +33,18 @@ module SakamichiScraper
 
       mkdir_today_file_path unless Dir.exist?(image_file_path)
       download_images_from_url_list(image_urls)
+    end
+
+    def members_name_kanji
+      extract_member_list(target: "name_ja")
+    end
+
+    def members_name_hiragana
+      extract_member_list(target: "name_ja_hiragana")
+    end
+
+    def members_name_en
+      extract_member_list(target: "name_en")
     end
 
     private
