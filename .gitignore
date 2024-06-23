@@ -11,6 +11,7 @@
 
 # ignore files needed only for development
 .ruby-version
+.tool-versions
 Gemfile.lock
 
 # rspec failure tracking
